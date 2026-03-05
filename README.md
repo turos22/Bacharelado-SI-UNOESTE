@@ -31,10 +31,10 @@ Aqui você pode ver as principais telas do sistema, desde o login seguro até o 
 
 <p align="center">
   <img src="screenshots/Login.png" width="200" title="Tela de Login">
-  <img src="screenshots/Postagens.png" width="200" title="Postagens">
+  <img src="screenshots/Postagens.png" width="400" title="Postagens">
   <img src="screenshots/Calendario.png" width="200" title="Calendario">
-  <img src="screenshots/Materiais.png" width="200" title="Materiais">
-  <img src="screenshots/Foto.png" width="200" title="CheckIn">
+  <img src="screenshots/Materiais.png" width="400" title="Materiais">
+  <img src="screenshots/Foto.png" width="450" title="CheckIn">
   <img src="screenshots/Presenca.png" width="200" title="Presença">
   <img src="screenshots/Configuracoes.png" width="200" title="Configurações">
   <img src="screenshots/IA.png" width="200" title="Gemini">
@@ -62,8 +62,8 @@ O projeto utiliza uma arquitetura moderna integrando o frontend nativo com servi
 | **Banco de Dados** | IBM Cloudant (NoSQL) |
 | **Comunicação** | API REST / JSON |
 
-## 👥 Desenvolvedores (The Tea PP)
-* Arthur Orosco
+## 👥 Desenvolvedores
+* Arthur Orosco - [GitHub](https://github.com/turos22)
 * Caio Emerick
 * Guilherme Guimarães
 * Lucas Peres

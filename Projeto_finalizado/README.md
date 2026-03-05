@@ -62,8 +62,8 @@ O projeto utiliza uma arquitetura moderna integrando o frontend nativo com servi
 | **Banco de Dados** | IBM Cloudant (NoSQL) |
 | **Comunicação** | API REST / JSON |
 
-## 👥 Desenvolvedores (The Tea PP)
-* Arthur Orosco
+## 👥 Desenvolvedores
+* Arthur Orosco - [GitHub](https://github.com/turos22)
 * Caio Emerick
 * Guilherme Guimarães
 * Lucas Peres

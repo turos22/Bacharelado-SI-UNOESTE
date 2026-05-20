@@ -29,6 +29,7 @@ window.mascara = mascara;
 window.validar_nome = validar_nome;
 window.validar_email = validar_email;
 window.preencherCEPAPI = preencherCEPAPI;
+window.mascaraValor = mascaraValor;
 
 //elementos em tela
 const dashboard_option = document.getElementById('dashboard_option_nav');
@@ -141,27 +142,30 @@ function verificar_login_usuario(){
 function verificar_senha(){
     let senha = document.getElementById("senha");
     let hint_senha = document.getElementById("hint_senha");
+    console.log(senha);
     if (senha.value.length < 8)
     {
         hint_senha.innerText = "Senha deve ter pelo menos 8 caracteres!";
         hint_senha.style.color = "red";
+        return false;
     }  
     else if (!senha.value.match(/[0-9]/))
     {
         hint_senha.innerText = "Senha deve ter pelo menos um numero!";
         hint_senha.style.color = "red";
-        senha.value = "";
+        return false;
     } 
     else if (!senha.value.match(/[a-zA-Z]/))
     {
         hint_senha.innerText = "Senha deve ter pelo menos uma letra!";
-        hint_senha.style.color = "red";
-        senha.value = "";
+        hint_senha.style.color = "red";        
+        return false;
     } 
     else
     {
         hint_senha.innerText = "Mínimo de 8 caracteres com letras e números";
         hint_senha.style.color = "green";
+        return true;
     }
 }
 
@@ -194,6 +198,7 @@ function formatar_cpf(elemento) {
 
 function validar_cpf(elemento)
 {
+    let pg = document.getElementById('hint_cpf');
     var cpf = elemento.value;
     var ok = 1;
     var add;
@@ -213,9 +218,9 @@ function validar_cpf(elemento)
                     ok = 0;
             if (ok == 1) {
                 add = 0;
-                for (i = 0; i < 9; i++)
+                for (var i = 0; i < 9; i++)
                     add += parseInt(cpf.charAt(i)) * (10 - i);
-                    rev = 11 - (add % 11);
+                    var rev = 11 - (add % 11);
                     if (rev == 10 || rev == 11)
                     rev = 0;
                     if (rev != parseInt(cpf.charAt(9)))
@@ -232,40 +237,66 @@ function validar_cpf(elemento)
                     }
                 }
                 if (ok == 0) {
-                    alert("Ops... Ocorreu um problema... CPF inválido!");
-                    elemento.focus();
-                    elemento.innerText = "";
+                    pg.style.color = "red";
+                    pg.textContent = "CPF inválido";
+                    return false;
                 }
+                pg.style.color = "black";
+                pg.textContent = "";
+                return true;
             }
 }   
 
 function validar_nome(elemento){
-    if (elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('hint_pessoa');
         var nomes  = elemento.value.split(" ");
         if (nomes.length < 2)
         {
-            alert("Nome deve ter pelo menos 2 nomes!");
-            elemento.focus();
+               pg.style.color = "red";
+               pg.textContent = "Nome deve ter 2 palavras";
+               return false;
         }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
     }
 }  
 
 function validar_email(elemento){
-    if (elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('hint_email');
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         if (!regex.test(elemento.value)){
-            alert("E-mail inválido!");
-            elemento.focus();
-            elemento.value = "";
+            pg.style.color = "red";
+            pg.textContent = "Email Inválido";
+            return false;
         }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
     }
 }
 
 function validar_cep(elemento){
-    if (elemento){
+    if (elemento && elemento.value){
        const regexCEP = /^[0-9]{5}-?[0-9]{3}$/;
        return regexCEP.test(elemento.value);
     }
+}
+
+function mascaraValor(input) {
+    let valor = input.value.replace(/\D/g, '');
+    valor = valor.substring(0, 7);
+    if (!valor) {
+        input.value = 'R$ 0,00';
+        return;
+    }
+    valor = valor.padStart(3, '0');
+    let inteiro = valor.slice(0, -2);
+    let centavos = valor.slice(-2);
+    inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    input.value = `R$ ${inteiro},${centavos}`;
 }
 
 function formatar_RG(elemento){
@@ -352,6 +383,29 @@ function maxId()
 }
 function salvar_usuario(event){
     event.preventDefault()
+    if (!validar_nome(document.getElementById('nome')))
+    {        
+        alert("Nome inválido!");
+        return false;
+    }
+
+    if (!validar_email(document.getElementById('email')))
+    {
+        alert("Email inválido!");
+        return false;
+    }
+
+    if (!validar_cpf(document.getElementById('cpf')))
+    {
+        alert("Nome inválido!");
+        return false;
+    }
+
+    if(!verificar_senha())
+    {
+        alert("Senha Inválida");
+        return false;
+    }
     const dados = new FormData(event.target);
     console.log("entrei");
     carregar_array_usuarios();
@@ -473,7 +527,7 @@ function editar_usuario(){
         cpf.value = usu_logado.cpf_cnpj;
         telefone.value = usu_logado.telefone;
         email.value = usu_logado.email;
-        senha.value = usu_logado.senha;
+        senha.value = descriptografar(usu_logado.senha,5);
         selecionar_tipo_cadastro(usu_logado.tipo);
         const titulo_cadastro = document.getElementById("titulo_cadastro");
         titulo_cadastro.innerText = "Editar";

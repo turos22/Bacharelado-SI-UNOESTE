@@ -28,6 +28,7 @@ window.validar_cpf = validar_cpf;
 window.mascara = mascara;
 window.validar_nome = validar_nome;
 window.validar_email = validar_email;
+window.validar_mensagem = validar_mensagem;
 window.preencherCEPAPI = preencherCEPAPI;
 window.mascaraValor = mascaraValor;
 window.validar_email_corporativo = validar_email_corporativo;
@@ -259,6 +260,20 @@ function validar_nome(elemento){
                pg.style.color = "red";
                pg.textContent = "Nome deve ter 2 palavras";
                return false;
+        }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
+    }
+}
+
+function validar_mensagem(elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('mensagem-hint');
+        if (elemento.value.length < 20){
+            pg.style.color = "red";
+            pg.textContent = "Mensagem deve ter no mínimo 20 caracteres";
+            return false;
         }
         pg.style.color = "black";
         pg.textContent = "";

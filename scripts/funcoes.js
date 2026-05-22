@@ -24,7 +24,16 @@ window.formatar_telefone = formatar_telefone;
 window.formatar_cnpj = formatar_cnpj;
 window.formatar_cpf = formatar_cpf;
 window.carregar_array_usuarios = carregar_array_usuarios;
-
+window.validar_cpf = validar_cpf;
+window.mascara = mascara;
+window.validar_nome = validar_nome;
+window.validar_email = validar_email;
+window.validar_mensagem = validar_mensagem;
+window.preencherCEPAPI = preencherCEPAPI;
+window.mascaraValor = mascaraValor;
+window.validar_email_corporativo = validar_email_corporativo;
+window.validar_cnpj = validar_cnpj;
+window.validar_nome_responsavel = validar_nome_responsavel;
 
 //elementos em tela
 const dashboard_option = document.getElementById('dashboard_option_nav');
@@ -137,27 +146,30 @@ function verificar_login_usuario(){
 function verificar_senha(){
     let senha = document.getElementById("senha");
     let hint_senha = document.getElementById("hint_senha");
+    console.log(senha);
     if (senha.value.length < 8)
     {
         hint_senha.innerText = "Senha deve ter pelo menos 8 caracteres!";
         hint_senha.style.color = "red";
+        return false;
     }  
     else if (!senha.value.match(/[0-9]/))
     {
         hint_senha.innerText = "Senha deve ter pelo menos um numero!";
         hint_senha.style.color = "red";
-        senha.value = "";
+        return false;
     } 
     else if (!senha.value.match(/[a-zA-Z]/))
     {
         hint_senha.innerText = "Senha deve ter pelo menos uma letra!";
-        hint_senha.style.color = "red";
-        senha.value = "";
+        hint_senha.style.color = "red";        
+        return false;
     } 
     else
     {
         hint_senha.innerText = "Mínimo de 8 caracteres com letras e números";
         hint_senha.style.color = "green";
+        return true;
     }
 }
 
@@ -179,19 +191,223 @@ function formatar_telefone(elemento){
 
 function formatar_cpf(elemento) {
     if (elemento) {
-        elemento.addEventListener('input', e => {
-            let v = e.target.value.replace(/\D/g, '').slice(0, 11);
-            
-            if (v.length > 9) {
-                v = `${v.slice(0, 3)}.${v.slice(3, 6)}.${v.slice(6, 9)}-${v.slice(9)}`;
-            } else if (v.length > 6) {
-                v = `${v.slice(0, 3)}.${v.slice(3, 6)}.${v.slice(6)}`;
-            } else if (v.length > 3) {
-                v = `${v.slice(0, 3)}.${v.slice(3)}`;
+            var cpf = elemento.value;
+            cpf = cpf.replace(/\D/g, "");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");    
+            elemento.value = cpf;
+    }
+}
+
+function validar_cpf(elemento)
+{
+    let pg = document.getElementById('hint_cpf');
+    var cpf = elemento.value;
+    var ok = 1;
+    var add;
+    if (cpf != "") {
+        cpf = cpf.replace(/[^\d]+/g, '');
+        if (cpf.length != 11 ||
+                cpf == "00000000000" ||
+                cpf == "11111111111" ||
+                cpf == "22222222222" ||
+                cpf == "33333333333" ||
+                cpf == "44444444444" ||
+                cpf == "55555555555" ||
+                cpf == "66666666666" ||
+                cpf == "77777777777" ||
+                cpf == "88888888888" ||
+                cpf == "99999999999")
+                    ok = 0;
+            if (ok == 1) {
+                add = 0;
+                for (var i = 0; i < 9; i++)
+                    add += parseInt(cpf.charAt(i)) * (10 - i);
+                    var rev = 11 - (add % 11);
+                    if (rev == 10 || rev == 11)
+                    rev = 0;
+                    if (rev != parseInt(cpf.charAt(9)))
+                    ok = 0;
+                    if (ok == 1) {
+                    add = 0;
+                    for (i = 0; i < 10; i++)
+                        add += parseInt(cpf.charAt(i)) * (11 - i);
+                    rev = 11 - (add % 11);
+                    if (rev == 10 || rev == 11)
+                        rev = 0;
+                    if (rev != parseInt(cpf.charAt(10)))
+                        ok = 0;
+                    }
+                }
+                if (ok == 0) {
+                    pg.style.color = "red";
+                    pg.textContent = "CPF inválido";
+                    return false;
+                }
+                pg.style.color = "black";
+                pg.textContent = "";
+                return true;
             }
-            
-            e.target.value = v;
-        });
+}   
+
+function validar_nome(elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('hint_pessoa');
+        var nomes  = elemento.value.split(" ");
+        if (nomes.length < 2)
+        {
+               pg.style.color = "red";
+               pg.textContent = "Nome deve ter 2 palavras";
+               return false;
+        }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
+    }
+}
+
+function validar_mensagem(elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('mensagem-hint');
+        if (elemento.value.length < 20){
+            pg.style.color = "red";
+            pg.textContent = "Mensagem deve ter no mínimo 20 caracteres";
+            return false;
+        }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
+    }
+}
+
+function validar_nome_responsavel(elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('hint_nome_responsavel');
+        var nomes  = elemento.value.split(" ");
+        if (nomes.length < 2)
+        {
+               pg.style.color = "red";
+               pg.textContent = "Nome deve ter 2 palavras";
+               return false;
+        }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
+    }
+}
+
+function validar_email(elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('hint_email');
+        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!regex.test(elemento.value)){
+            pg.style.color = "red";
+            pg.textContent = "Email Inválido";
+            return false;
+        }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
+    }
+}
+
+function validar_email_corporativo(elemento){
+    if (elemento && elemento.value){
+        let pg = document.getElementById('hint_email_corporativo');
+        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!regex.test(elemento.value)){
+            pg.style.color = "red";
+            pg.textContent = "Email Inválido";
+            return false;
+        }
+        pg.style.color = "black";
+        pg.textContent = "";
+        return true;
+    }
+}
+
+function validar_cnpj(elemento){
+    let pg = document.getElementById('hint_cnpj');
+    var cnpj = elemento.value;
+    var ok = 1;
+    var add;
+    if (cnpj != "") {
+        cnpj = cnpj.replace(/[^\d]+/g, '');
+        if (cnpj.length != 14 ||
+                cnpj == "00000000000000" ||
+                cnpj == "11111111111111" ||
+                cnpj == "22222222222222" ||
+                cnpj == "33333333333333" ||
+                cnpj == "44444444444444" ||
+                cnpj == "55555555555555" ||
+                cnpj == "66666666666666" ||
+                cnpj == "77777777777777" ||
+                cnpj == "88888888888888" ||
+                cnpj == "99999999999999")
+                    ok = 0;
+            if (ok == 1) {
+                add = 0;
+                for (var i = 0; i < 4; i++)
+                    add += parseInt(cnpj.charAt(i)) * (5 - i);
+                for (i = 0; i < 8; i++)
+                    add += parseInt(cnpj.charAt(i + 4)) * (9 - i);
+                var rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11)
+                    rev = 0;
+                if (rev != parseInt(cnpj.charAt(12)))
+                    ok = 0;
+                if (ok == 1) {
+                    add = 0;
+                    for (i = 0; i < 5; i++)
+                        add += parseInt(cnpj.charAt(i)) * (6 - i);
+                    for (i = 0; i < 8; i++)
+                        add += parseInt(cnpj.charAt(i + 5)) * (9 - i);
+                    rev = 11 - (add % 11);
+                    if (rev == 10 || rev == 11)
+                        rev = 0;
+                    if (rev != parseInt(cnpj.charAt(13)))
+                        ok = 0;
+                }
+            }
+            if (ok == 0) {
+                pg.style.color = "red";
+                pg.textContent = "CNPJ inválido";
+                return false;
+            }
+            pg.style.color = "black";
+            pg.textContent = "";
+            return true;
+        }
+}
+
+function validar_cep(elemento){
+    if (elemento && elemento.value){
+       const regexCEP = /^[0-9]{5}-?[0-9]{3}$/;
+       return regexCEP.test(elemento.value);
+    }
+}
+
+function mascaraValor(input) {
+    let valor = input.value.replace(/\D/g, '');
+    valor = valor.substring(0, 7);
+    if (!valor) {
+        input.value = 'R$ 0,00';
+        return;
+    }
+    valor = valor.padStart(3, '0');
+    let inteiro = valor.slice(0, -2);
+    let centavos = valor.slice(-2);
+    inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    input.value = `R$ ${inteiro},${centavos}`;
+}
+
+function formatar_RG(elemento){
+    if (elemento){
+        const valor = elemento.value.replace(/\D/g, '').slice(0,9);
+        if (valor.length > 12){
+            v = `${v.slice(0, 2)}.${v.slice(2, 5)}.${v.slice(5, 8)}/${v.slice(8)}`;   
+        }
     }
 }
 
@@ -215,6 +431,45 @@ function formatar_cnpj(elemento) {
     }
 }
 
+function mascara(m,t,e){
+    var cursor = t.selectionStart;
+    var texto = t.value;
+    texto = texto.replace(/\D/g,'');
+    var l = texto.length;
+    var lm = m.length;
+    var id;
+    if(window.Event) {                  
+        id = e.keyCode;
+    } else if(e.which){                 
+        id = e.which;
+    }
+    var cursorfixo=false;
+    if(cursor < l)cursorfixo=true;
+    var livre = false;
+    if(id == 16 || id == 19 || (id >= 33 && id <= 40))livre = true;
+    var ii=0;
+    var mm=0;
+    if(!livre){
+        if(id!=8){
+            t.value="";
+            var j=0;
+            for(var i=0;i<lm;i++){
+            if(m.substr(i,1)=="#"){
+                t.value+=texto.substr(j,1);
+                j++;
+            }else if(m.substr(i,1)!="#"){
+                        t.value+=m.substr(i,1);
+                    }
+                    if(id!=8 && !cursorfixo)cursor++;
+                    if((j)==l+1)break;
+                        
+            } 	
+        }
+    }
+    if(cursorfixo && !livre)cursor--;
+        t.setSelectionRange(cursor, cursor);
+}
+
 function maxId()
 {
     if (usuarios)
@@ -231,7 +486,56 @@ function maxId()
 }
 function salvar_usuario(event){
     event.preventDefault()
+    if (tipo_pessoa_cadastro == 1)
+    {
+        if (!validar_nome(document.getElementById('nome')))
+        {        
+            alert("Nome inválido!");
+            return false;
+        }
+
+        if (!validar_email(document.getElementById('email')))
+        {
+            alert("Email inválido!");
+            return false;
+        }
+
+        if (!validar_cpf(document.getElementById('cpf')))
+        {
+            alert("CPF inválido!");
+            return false;
+        }
+
+        if(!verificar_senha())
+        {
+            alert("Senha Inválida");
+            return false;
+        }
+    }
+
+    if (tipo_pessoa_cadastro == 2)
+    {
+       if (!validar_nome_responsavel(document.getElementById('nome_responsavel')))
+        {        
+            alert("Nome inválido!");
+            return false;
+        }
+
+        if (!validar_email_corporativo(document.getElementById('email_corporativo')))
+        {
+            alert("Email inválido!");
+            return false;
+        }
+
+        if (!validar_cnpj(document.getElementById('cnpj')))
+        {
+            alert("CNPJ inválido!");
+            return false;
+        } 
+    }
+    
     const dados = new FormData(event.target);
+    console.log("entrei");
     carregar_array_usuarios();
     const usu_logado = JSON.parse(localStorage.getItem("usu_logado"));
     let email = dados.get("email");
@@ -253,6 +557,12 @@ function salvar_usuario(event){
             usu.cpf_cnpj = dados.get("cpf");
             usu.telefone = dados.get("telefone_pessoa");
             usu.deficiencia = dados.get("deficiencia");
+            usu.dt_nascimento = dados.get("dt_nascimento");
+            usu.rg = dados.get("rg");
+            usu.sexo = dados.get("sexo");
+            usu.estado_civil = dados.get("estado_civil");
+            usu.raca = dados.get("raca");
+            usu.escolaridade = dados.get("escolaridade");
         }
         else
         {
@@ -261,7 +571,19 @@ function salvar_usuario(event){
             usu.telefone = dados.get("telefone_empresa");
             usu.nome_responsavel = dados.get("nome_responsavel");
             usu.setor = dados.get("setor");
+            usu.ie = dados.get("ie_empresa");
+            usu.qtd_funcionarios = dados.get("qtd_funcionarios");
+            usu.finalidade = dados.get("finalidade_empresa");
         }
+        // Campos compartilhados (coringas)
+        usu.cep = dados.get("cep");
+        usu.rua = dados.get("rua");
+        usu.bairro = dados.get("bairro");
+        usu.numero = dados.get("numero_end");
+        usu.cidade = dados.get("cidade");
+        usu.uf = dados.get("uf");
+        usu.link_web = dados.get("link_web");
+        usu.valor_mensal = dados.get("valor_mensal");
 
         if (usu_logado)
             usuarios[usu.usu_id - 1] = usu;
@@ -293,7 +615,13 @@ function editar_usuario(){
             if (item) {
                 triggerpessoa.querySelector('span').innerText = item.innerText;
             }
-            
+            // Campos adicionais de Pessoa Física
+            document.getElementById("dt_nascimento").value = usu_logado.dt_nascimento || "";
+            document.getElementById("rg").value = usu_logado.rg || "";
+            document.getElementById("sexo").value = usu_logado.sexo || "";
+            document.getElementById("estado_civil").value = usu_logado.estado_civil || "";
+            document.getElementById("raca").value = usu_logado.raca || "";
+            document.getElementById("escolaridade").value = usu_logado.escolaridade || "";
         }
         else{
             nome = document.getElementById("razao_social");
@@ -308,12 +636,25 @@ function editar_usuario(){
             if (item) {
                 triggerempresa.querySelector('span').innerText = item.innerText;
             }
+            // Campos adicionais de Empresa
+            document.getElementById("qtd_funcionarios").value = usu_logado.qtd_funcionarios || "";
+            document.getElementById("finalidade_empresa").value = usu_logado.finalidade || "";
         }
+        // Campos compartilhados (coringas)
+        document.getElementById("cep").value = usu_logado.cep || "";
+        document.getElementById("rua").value = usu_logado.rua || "";
+        document.getElementById("bairro").value = usu_logado.bairro || "";
+        document.getElementById("numero_end").value = usu_logado.numero || "";
+        document.getElementById("cidade").value = usu_logado.cidade || "";
+        document.getElementById("uf").value = usu_logado.uf || "";
+        document.getElementById("link_web").value = usu_logado.link_web || "";
+        document.getElementById("valor_mensal").value = usu_logado.valor_mensal || "";
+
         nome.value = usu_logado.nome;
         cpf.value = usu_logado.cpf_cnpj;
         telefone.value = usu_logado.telefone;
         email.value = usu_logado.email;
-        senha.value = usu_logado.senha;
+        senha.value = descriptografar(usu_logado.senha,5);
         selecionar_tipo_cadastro(usu_logado.tipo);
         const titulo_cadastro = document.getElementById("titulo_cadastro");
         titulo_cadastro.innerText = "Editar";
@@ -360,6 +701,9 @@ function redirecionar(pagina){
 function selecionar_tipo_cadastro(tipo){
     const btn_pessoa = document.getElementById("btn_pessoa");
     const btn_empresa = document.getElementById("btn_empresa");
+    const label_link = document.getElementById("label_link_web");
+    const label_valor = document.getElementById("label_valor_mensal");
+    const input_link = document.getElementById("link_web");
     if(tipo == 1){
         btn_pessoa.classList.add("active");
         btn_empresa.classList.remove("active");
@@ -370,6 +714,10 @@ function selecionar_tipo_cadastro(tipo){
         inputs_empresa.forEach(input => {
             input.required = false;
         });
+        // Trocar labels dos coringas para Pessoa
+        label_link.innerText = "Rede Social";
+        label_valor.innerText = "Renda Mensal";
+        input_link.placeholder = "https://linkedin.com/in/seu-perfil";
     }else{
         btn_pessoa.classList.remove("active");
         btn_empresa.classList.add("active");
@@ -380,6 +728,10 @@ function selecionar_tipo_cadastro(tipo){
         inputs_pessoa.forEach(input => {
             input.required = false;
         });
+        // Trocar labels dos coringas para Empresa
+        label_link.innerText = "Site";
+        label_valor.innerText = "Faturamento Mensal";
+        input_link.placeholder = "https://www.suaempresa.com.br";
     }
 }
 
@@ -392,7 +744,7 @@ function selecionar_op(opcao){
         
     }else{
         triggerempresa.querySelector('span').innerText = opcao.innerText;
-        let inputHidden = document.getElementById('setor_input');
+        let inputHidden = document.getElementById('setor');
         inputHidden.value = opcao.getAttribute('data-value');
         selectempresa.classList.remove('open');
     }
@@ -410,6 +762,27 @@ function BuscaUsuarioEmail(email){
         }
         return null;
     }
+}
+
+async function preencherCEPAPI(campo){
+    let cep = campo.value;
+    if (validar_cep(campo))
+    {
+        cep = cep.replace("-","");
+        let url = "https://viacep.com.br/ws/"+cep+"/json/"
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+        if (!dados.erro){
+            document.getElementById("rua").value = dados.logradouro;
+            document.getElementById("bairro").value = dados.bairro;
+            document.getElementById("cidade").value = dados.localidade;
+            document.getElementById("uf").value = dados.uf;
+        }
+    }
+    else{
+        alert("CEP inválido!");
+    }
+    
 }
 
 

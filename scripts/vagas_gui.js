@@ -11,7 +11,8 @@ const ITEMS_PER_PAGE = 3;
 
 function renderizarVagas(listaVagas, mostrarInativas = false) {
     const container = document.getElementById("jobsList");
-    container.innerHTML = "";
+    if (!container) return;
+      container.innerHTML = "";
 
     // FILTRAR SE PRECISA MOSTRAR SÓ ATIVAS
     const vagasFiltradas = mostrarInativas 
@@ -45,7 +46,12 @@ function renderizarVagas(listaVagas, mostrarInativas = false) {
             ${v.descricao}
           </p>
           <div class="job-item-meta">
-            <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> ${v.local}</span>
+            ${v.modalidade !== 'home' ? `
+                <span>
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  ${v.endereco.cidade}, ${v.endereco.estado}
+                </span>
+              ` : ''}
             <span><i class="fa-regular fa-clock" aria-hidden="true"></i> Há ${dias} dias</span>
           </div>
           <div class="job-item-tags">
@@ -55,12 +61,154 @@ function renderizarVagas(listaVagas, mostrarInativas = false) {
           </div>
           <div class="job-item-footer">
             <span class="job-item-salary"> R$ ${v.salario_minimo} – R$ ${v.salario_maximo}</span>
-            <a href="#" class="btn btn-primary btn-sm">Ver Detalhes</a>
+            <button class="btn btn-primary btn-sm btn-detalhes" onclick="abrirDetalhesVaga(${v.id})">
+              Ver Detalhes
+            </button>
           </div>
         </li>
         `;
     });
 }
+
+function renderizarVagasIndex(listaVagas, mostrarInativas = false) {
+    const container = document.getElementById("jobs-grid");
+    if (!container) return;
+      container.innerHTML = "";
+
+    // FILTRAR SE PRECISA MOSTRAR SÓ ATIVAS
+    const vagasFiltradas = (
+        mostrarInativas
+          ? listaVagas
+          : listaVagas.filter(v => v.status == "ativa")
+    ).slice(0, 4);
+
+    vagasFiltradas.forEach(v => {
+        const defV = v.deficiencia.split(" ");
+        const dataAtual = new Date();
+        const dataV = new Date(v.data);
+        const dias = Math.floor((dataAtual - dataV) / (1000 * 60 * 60 * 24));
+        container.innerHTML += `
+          <article class="job-card" 
+          data-deficiencia="${v.deficiencia}"
+          data-modalidade="${v.modalidade}"
+          data-contrato="${v.contrato}"
+          data-salario-min="${v.salario_minimo}"
+          data-tempo="${dias}">
+            <div class="job-card-header">
+              <div>
+                <h3 class="job-title">${v.titulo}</h3>
+                <p class="job-company">
+                  <i class="fa-regular fa-building" aria-hidden="true"></i> ${v.empresa}
+                </p>
+              </div>
+              <div class="job-icon" aria-hidden="true">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+            </div>
+            <div class="job-meta">
+              ${v.modalidade !== 'home' ? `
+                <span>
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  ${v.endereco.cidade}, ${v.endereco.estado}
+                </span>
+              ` : ''}
+              <span><i class="fa-regular fa-clock" aria-hidden="true"></i> Há ${dias} dias</span>
+            </div>
+            <div class="job-tags">
+              <span class="tag tag-clt">${formatarContrato(v.contrato)}</span>
+              <span class="tag tag-mode">${formatarModalidade(v.modalidade)}</span>
+            </div>
+            <div class="job-disabilities">
+              ${defV.map(d => `<span class="tag tag-disability">${formatarDeficiencia(d)}</span>`).join('')}
+            </div>
+            <div class="job-footer">
+              <span class="job-salary">R$ ${v.salario_minimo} – R$ ${v.salario_maximo}</span>
+              <button class="btn btn-primary btn-sm btn-detalhes" onclick="abrirDetalhesVaga(${v.id})">
+                Ver Detalhes
+              </button>
+            </div>
+          </article>`;
+    });
+}
+
+function abrirDetalhesVaga(id) {
+
+  const vaga =
+    vagas.find(v => v.id == id);
+
+  if (!vaga) return;
+
+  document.getElementById('detalhesTitulo')
+    .textContent = vaga.titulo;
+
+  document.getElementById('detalhesEmpresa')
+    .textContent = vaga.empresa;
+
+  document.getElementById('detalhesDescricao')
+    .textContent = vaga.descricao || '-';
+
+  document.getElementById('detalhesModalidade')
+    .textContent = formatarModalidade(vaga.modalidade);
+
+  document.getElementById('detalhesContrato')
+    .textContent = formatarContrato(vaga.contrato);
+
+  document.getElementById('detalhesEscolaridade')
+    .textContent = formatarEscolaridade(vaga.escolaridade);
+
+  document.getElementById('detalhesSalario')
+    .textContent =
+      `R$ ${vaga.salario_minimo} - R$ ${vaga.salario_maximo}`;
+
+  // ENDEREÇO
+  const blocoEndereco =
+    document.getElementById('blocoEndereco');
+
+  if (vaga.modalidade === 'home') {
+
+    blocoEndereco.style.display = 'none';
+
+  } else {
+
+    blocoEndereco.style.display = '';
+
+    document.getElementById('detalhesEndereco')
+      .textContent =
+      `${vaga.endereco.rua}, ${vaga.endereco.numero}
+       ${vaga.endereco.bairro}
+       ${vaga.endereco.cidade} - ${vaga.endereco.estado}
+          CEP: ${vaga.endereco.cep}`;
+            }
+
+  document.getElementById('detalhesBeneficios')
+    .textContent = vaga.beneficios || '-';
+
+  document.getElementById('detalhesRequisitos')
+    .textContent = vaga.requisitos || '-';
+
+  document.getElementById('detalhesReqOpc')
+    .textContent =
+      vaga.requisitos_opcionais || '-';
+
+  document.getElementById('detalhesResponsabilidades')
+    .textContent =
+      vaga.responsabilidades || '-';
+
+  document.getElementById('detalhesDeficiencia')
+    .textContent =
+      vaga.deficiencia || '-';
+
+  document.getElementById('modalDetalhesOverlay')
+    .classList.add('active');
+}
+
+function fecharModalDetalhes() {
+
+  document.getElementById('modalDetalhesOverlay')
+    .classList.remove('active');
+}
+
+
 
 function formatarModalidade(mod) {
     switch(mod) {
@@ -90,7 +238,17 @@ function formatarDeficiencia(mod) {
     }
 }
 
+function formatarEscolaridade(mod) {
+    switch(mod) {
+        case "medio": return "Ensino Médio";
+        case "graduacao": return "Graduação";
+        case "pos": return "Pós-Graduação";
+        default: return mod;
+    }
+}
+
 renderizarVagas(vagas, false);
+renderizarVagasIndex(vagas, false);
 
 const allItems      = Array.from(document.querySelectorAll('.job-item'));
 const jobsCount     = document.getElementById('jobsCount');

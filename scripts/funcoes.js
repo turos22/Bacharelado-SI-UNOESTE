@@ -127,11 +127,11 @@ function verificar_login_usuario(){
         {
             case 1:
                 dashboard_option.style.display = "block";
-                dashboard_link.href = "dashboard_usuario.html";
+                dashboard_link.href = "paginas/dashboard_usuario.html";
                 break;
             case 2:
                 dashboard_option.style.display = "block";
-                dashboard_link.href = "vagas-empresa.html";
+                dashboard_link.href = "paginas/vagas-empresa.html";
                 break;
         }
     }

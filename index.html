@@ -6,13 +6,13 @@
   <meta name="description" content="Incluir+ — Plataforma acessível e inclusiva que conecta pessoas com deficiência a vagas de emprego, cursos e oportunidades." />
   <title>Incluir+ | Conectando talentos a oportunidades</title>
 
-  <link rel="stylesheet" href="../estilos/pagina_inicial.css" />
+  <link rel="stylesheet" href="/estilos/pagina_inicial.css" />
 
-  <link rel="stylesheet" href="../estilos/vagas_gui.css" />
+  <link rel="stylesheet" href="/estilos/vagas_gui.css" />
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <script type="module" src="../scripts/funcoes.js"></script>
+  <script type="module" src="/scripts/funcoes.js"></script>
   <script>
     window.onload = function(){
         carregar_nome_usuario();
@@ -36,23 +36,23 @@
 
       <ul class="custom-nav-links" id="navLinks" role="list">
          <li><a href="index.html" class="active"><i class="fa-solid fa-house" aria-hidden="true"></i> Início</a></li>
-        <li><a href="vagas_gui.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Vagas</a></li>
-        <li><a href="Cursos.html"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Cursos</a></li>
-        <li><a href="blog.html"><i class="fa-regular fa-newspaper" aria-hidden="true"></i> Blog</a></li>
-        <li><a href="faq.html"><i class="fa-regular fa-circle-question" aria-hidden="true"></i> FAQ</a></li>
-        <li><a href="contato.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contato</a></li>
-        <li><a href="Pagina_Transparencia.html"><i class="fa-solid fa-check" aria-hidden="true"></i> Página de Transparência</a></li>
-        <li id="dashboard_option_nav"><a href="contato.html"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Dashboard</a></li>
+        <li><a href="paginas/vagas_gui.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Vagas</a></li>
+        <li><a href="paginas/Cursos.html"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Cursos</a></li>
+        <li><a href="paginas/blog.html"><i class="fa-regular fa-newspaper" aria-hidden="true"></i> Blog</a></li>
+        <li><a href="paginas/faq.html"><i class="fa-regular fa-circle-question" aria-hidden="true"></i> FAQ</a></li>
+        <li><a href="paginas/contato.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contato</a></li>
+        <li><a href="paginas/Pagina_Transparencia.html"><i class="fa-solid fa-check" aria-hidden="true"></i> Página de Transparência</a></li>
+        <li id="dashboard_option_nav"><a href="paginas/contato.html"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Dashboard</a></li>
       </ul>
 
       <div class="custom-nav-actions">
         <div id="cabec_padrao">
-            <a href="Login.html" class="btn btn-outline">Entrar</a>
-            <a href="Cadastro.html" class="btn btn-primary">Cadastrar</a>
+            <a href="paginas/Login.html" class="btn btn-outline">Entrar</a>
+            <a href="paginas/Cadastro.html" class="btn btn-primary">Cadastrar</a>
         </div>
         <div style="display: none; align-items: center; justify-content: center; gap: 10px;" id="div_logado">
-            <i class="fa-solid fa-user usu_logado" onclick="redirecionar('Cadastro.html')" style="cursor: pointer;"></i>
-            <span id="nome_usuario" onclick="redirecionar('Cadastro.html')"></span>
+            <i class="fa-solid fa-user usu_logado" onclick="redirecionar('paginas/Cadastro.html')" style="cursor: pointer;"></i>
+            <span id="nome_usuario" onclick="redirecionar('paginas/Cadastro.html')"></span>
             <button type="button" class="btn btn-light me-2" id="bb_sair" onclick="deslogar()">Sair</button>
         </div>
       </div>
@@ -67,19 +67,19 @@
     <div class="custom-nav-mobile" id="navMobile" aria-hidden="true">
       <ul role="list">
         <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Início</a></li>
-        <li><a href="vagas_gui.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Vagas</a></li>
-        <li><a href="Cursos.html"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Cursos</a></li>
-        <li><a href="blog.html"><i class="fa-regular fa-newspaper" aria-hidden="true"></i> Blog</a></li>
-        <li><a href="faq.html"><i class="fa-regular fa-circle-question" aria-hidden="true"></i> FAQ</a></li>
-        <li><a href="contato.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contato</a></li>
-        <li><a href="Pagina_Transparencia.html"><i class="fa-solid fa-check" aria-hidden="true"></i> Página de Transparência</a></li>
+        <li><a href="paginas/vagas_gui.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Vagas</a></li>
+        <li><a href="paginas/Cursos.html"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Cursos</a></li>
+        <li><a href="paginas/blog.html"><i class="fa-regular fa-newspaper" aria-hidden="true"></i> Blog</a></li>
+        <li><a href="paginas/faq.html"><i class="fa-regular fa-circle-question" aria-hidden="true"></i> FAQ</a></li>
+        <li><a href="paginas/contato.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contato</a></li>
+        <li><a href="paginas/Pagina_Transparencia.html"><i class="fa-solid fa-check" aria-hidden="true"></i> Página de Transparência</a></li>
         <li class="nav-item p-2 m-1" style="display: none; font-weight: bold;" id="dashboard_option_nav">
             <a class="text-dark/90 nav-link" href="#"><i class="fa-solid fa-chart-pie" style="margin-right: 5px;"></i>Dashboard</a>
         </li>
       </ul>
       <div class="custom-nav-mobile-actions">
-        <a href="Login.html" class="btn btn-outline">Entrar</a>
-        <a href="Cadastro.html" class="btn btn-primary">Cadastrar</a>
+        <a href="paginas/Login.html" class="btn btn-outline">Entrar</a>
+        <a href="paginas/Cadastro.html" class="btn btn-primary">Cadastrar</a>
       </div>
     </div>
   </nav>
@@ -108,7 +108,7 @@
               <a href="#vagas" class="btn btn-primary btn-lg">
                 Explorar Vagas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
               </a>
-              <a href="Cadastro.html" class="btn btn-outline btn-lg" id="btn_criar-conta">Criar Conta Gratuita</a>
+              <a href="paginas/Cadastro.html" class="btn btn-outline btn-lg" id="btn_criar-conta">Criar Conta Gratuita</a>
             </div>
 
             <div class="hero-stats" role="list" aria-label="Números da plataforma">
@@ -244,7 +244,7 @@
             <h2 id="jobs-title">Vagas em Destaque</h2>
             <p>Oportunidades selecionadas de empresas comprometidas com a inclusão</p>
           </div>
-          <a href="vagas_gui.html" class="btn btn-outline">
+          <a href="paginas/vagas_gui.html" class="btn btn-outline">
             Ver todas as vagas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
@@ -266,7 +266,7 @@
             <h2 id="courses-title">Cursos de Capacitação</h2>
             <p>Desenvolva novas habilidades com cursos acessíveis e certificados</p>
           </div>
-          <a href="Cursos.html" class="btn btn-outline">
+          <a href="paginas/Cursos.html" class="btn btn-outline">
             Ver todos os cursos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
@@ -445,8 +445,8 @@
   </footer>
 
   <script src="/scripts/pagina_inicial.js"></script>
-  <script src="../scripts/lista_vagas.js"></script>
-  <script src="../scripts/vagas_gui.js"></script>
+  <script src="/scripts/lista_vagas.js"></script>
+  <script src="/scripts/vagas_gui.js"></script>
 
   <div class="modal-overlay" id="modalDetalhesOverlay">
 

@@ -694,8 +694,13 @@ function alternarsenha(elemento){
     }
 }
 
-function redirecionar(pagina){
-    window.location.href = pagina;
+function redirecionar(pagina) {
+    // Remove barras do começo se o desenvolvedor tiver colocado por engano
+    const caminhoLimpo = pagina.startsWith('/') ? pagina.substring(1) : pagina;
+    
+    // Força o redirecionamento a partir da raiz do domínio
+    window.location.origin; 
+    window.location.href = window.location.origin + '/' + caminhoLimpo;
 }
 
 function selecionar_tipo_cadastro(tipo){

@@ -132,10 +132,10 @@ function renderizarVagasIndex(listaVagas, mostrarInativas = false) {
 }
 
 function abrirDetalhesVaga(id) {
-
+  console.log("Abrindo detalhes da vaga ID:", id);
   const vaga =
     vagas.find(v => v.id == id);
-
+  console.log("Abrindo detalhes da vaga ID:", id);
   if (!vaga) return;
 
   document.getElementById('detalhesTitulo')
@@ -197,15 +197,18 @@ function abrirDetalhesVaga(id) {
   document.getElementById('detalhesDeficiencia')
     .textContent =
       vaga.deficiencia || '-';
-
-  document.getElementById('modalDetalhesOverlay')
-    .classList.add('active');
+    
+  const modal = document.getElementById('modalDetalhesOverlay');
+  modal.style.display = 'flex';
+  modal.classList.add('active');
 }
 
 function fecharModalDetalhes() {
 
-  document.getElementById('modalDetalhesOverlay')
-    .classList.remove('active');
+  const modal =  document.getElementById('modalDetalhesOverlay')
+  modal.classList.remove('active');
+  modal.style.display = 'none';
+  console.log(document.getElementById('modalDetalhesOverlay'));
 }
 
 

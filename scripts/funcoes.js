@@ -41,9 +41,8 @@ const cadpessoa = document.getElementById('pessoa');
 const cadempresa = document.getElementById('empresa');
 const selectpessoa = document.getElementById('selectPessoa');
 const selectempresa = document.getElementById('selectEmpresa');
-const triggerpessoa = selectpessoa.querySelector('.select-trigger');
-const triggerempresa = selectempresa.querySelector('.select-trigger');
-
+const triggerpessoa = selectpessoa ? selectpessoa.querySelector('.select-trigger') : null;
+const triggerempresa = selectempresa ? selectempresa.querySelector('.select-trigger') : null;
 //variavies globais
 var tipo_pessoa_cadastro = 1;
 var usuario_logado = null;
@@ -122,24 +121,52 @@ function realizar_login(event){
 function verificar_login_usuario(){
     let usu_logado = JSON.parse(localStorage.getItem("usu_logado"));
     if (usu_logado){
-        let dashboard_link = dashboard_option.querySelector('a');
-        switch(usu_logado.tipo)
-        {
-            case 1:
-                dashboard_option.style.display = "block";
-                dashboard_link.href = "../paginas/dashboard_usuario.html";
-                break;
-            case 2:
-                dashboard_option.style.display = "block";
-                dashboard_link.href = "../paginas/vagas-empresa.html";
-                break;
+        // Desktop dashboard
+        if (dashboard_option) {
+            let dashboard_link = dashboard_option.querySelector('a');
+            switch(usu_logado.tipo)
+            {
+                case 1:
+                    dashboard_option.style.display = "block";
+                    dashboard_link.href = "../paginas/dashboard_usuario.html";
+                    break;
+                case 2:
+                    dashboard_option.style.display = "block";
+                    dashboard_link.href = "../paginas/vagas-empresa.html";
+                    break;
+            }
+        }
+        // Mobile dashboard
+        const mobile_dashboard = document.getElementById("dashboard_option_nav_mobile");
+        if (mobile_dashboard) {
+            mobile_dashboard.style.display = "block";
+            const mobile_dashboard_link = mobile_dashboard.querySelector('a');
+            if (mobile_dashboard_link) {
+                switch(usu_logado.tipo) {
+                    case 1:
+                        mobile_dashboard_link.href = "../paginas/dashboard_usuario.html";
+                        break;
+                    case 2:
+                        mobile_dashboard_link.href = "../paginas/vagas-empresa.html";
+                        break;
+                }
+            }
         }
     }
-    else
-        dashboard_option.style.display = 'none';
+    else{
+        // Desktop dashboard
+        if (dashboard_option) {
+            dashboard_option.style.display = 'none';
+        }
+        // Mobile dashboard hide
+        const mobile_dashboard = document.getElementById("dashboard_option_nav_mobile");
+        if (mobile_dashboard) {
+            mobile_dashboard.style.display = "none";
+        }
+    }
 
     let btn_criar_conta = document.getElementById("btn_criar-conta");
-    if (usu_logado)
+    if (btn_criar_conta && usu_logado)
         btn_criar_conta.style.display = 'none';
 }
 
@@ -669,15 +696,23 @@ function editar_usuario(){
 function carregar_nome_usuario(){
     const div_nao_logado = document.getElementById("cabec_padrao");
     const div_logado = document.getElementById("div_logado");
+    const mobile_div_nao_logado = document.getElementById("mobile_cabec_padrao");
+    const mobile_div_logado = document.getElementById("mobile_div_logado");
     const usu_logado = JSON.parse(localStorage.getItem("usu_logado"));
     if (usu_logado){
         const nome_usuario = document.getElementById("nome_usuario");
+        const mobile_nome_usuario = document.getElementById("mobile_nome_usuario");
         nome_usuario.innerText = "Olá, " + usu_logado.nome.split(" ")[0];
+        mobile_nome_usuario.innerText = "Olá, " + usu_logado.nome.split(" ")[0];
         div_nao_logado.style.display = "none";
         div_logado.style.display = "flex";
+        mobile_div_nao_logado.style.display = "none";
+        mobile_div_logado.style.display = "flex";
     }else{
         div_nao_logado.style.display = "flex";
         div_logado.style.display = "none";
+        mobile_div_nao_logado.style.display = "flex";
+        mobile_div_logado.style.display = "none";
     }
 }
 

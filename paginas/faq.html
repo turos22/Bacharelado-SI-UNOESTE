@@ -68,13 +68,22 @@
         <li><a href="faq.html"><i class="fa-regular fa-circle-question" aria-hidden="true"></i> FAQ</a></li>
         <li><a href="contato.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contato</a></li>
         <li><a href="Pagina_Transparencia.html"><i class="fa-solid fa-check" aria-hidden="true"></i> Página de Transparência</a></li>
-        <li class="nav-item p-2 m-1" style="display: none; font-weight: bold;" id="dashboard_option_nav">
+        <li class="nav-item p-2 m-1" style="display: none; font-weight: bold;" id="dashboard_option_nav_mobile">
             <a class="text-dark/90 nav-link" href="#"><i class="fa-solid fa-chart-pie" style="margin-right: 5px;"></i>Dashboard</a>
         </li>
       </ul>
       <div class="custom-nav-mobile-actions">
-        <a href="Login.html" class="btn btn-outline">Entrar</a>
-        <a href="Cadastro.html" class="btn btn-primary">Cadastrar</a>
+        
+        <div id="mobile_cabec_padrao">
+          <a href="Login.html" class="btn btn-outline">Entrar</a>
+          <a href="Cadastro.html" class="btn btn-primary">Cadastrar</a>
+        </div>
+        
+        <div id="mobile_div_logado" style="display: none; align-items: center; justify-content: center; gap: 10px;">
+          <i class="fa-solid fa-user usu_logado" onclick="redirecionar('paginas/Cadastro.html')" style="cursor: pointer;"></i>
+          <span id="mobile_nome_usuario" onclick="redirecionar('paginas/Cadastro.html')"></span>
+          <button type="button" class="btn btn-light me-2" id="mobile_bb_sair" onclick="deslogar()">Sair</button>
+        </div>
       </div>
     </div>
   </nav>

@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python -m py_compile Traba.py)",
-      "Bash(python -m py_compile pageTeste.py classes/Cadastro.py classes/banco.py Entrar.py)"
-    ]
-  }
-}

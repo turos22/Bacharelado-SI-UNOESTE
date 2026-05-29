@@ -104,14 +104,6 @@ Projeto desenvolvido durante o 2º semestre da faculdade (2024/2025):
 - **Mateus Maciel** - [Portfólio](../Portifolio%20Mateus/HTML2.html)
 - **Renan Carvalho** - [Portfólio](../Portifolio%20Renan/index.html)
 
-## 🎨 Screenshots
-
-> Adicione screenshots do projeto na pasta `/screenshots` e atualize os links abaixo:
-> - Tela Inicial
-> - Login
-> - Área de Voluntários
-> - Formulário de Cadastro
-
 ## 📋 Observações Importantes
 
 ⚠️ **Este é um projeto acadêmico** e possui algumas limitações de segurança:

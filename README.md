@@ -120,7 +120,9 @@ Projeto desenvolvido durante o 2º semestre da faculdade (2024/2025):
 
 ## 📄 Licença
 
-Este projeto é destinado exclusivamente para fins educacionais como parte das atividades acadêmicas da disciplina de Ambientes 2.
+Este projeto é distribuído sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+⚠️ **Nota:** Este é um projeto acadêmico e possui limitações de segurança (senhas em texto plano, SQL Injection). Não recomendado para uso em produção sem modificações.
 
 ---
 ✨ Desenvolvido com Python e CherryPy

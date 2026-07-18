@@ -1,4 +1,4 @@
-# 📝 Editor de Textos em C++
+# 📝 Editor de Textos em C
 
 Este é um projeto de um Editor de Textos interativo desenvolvido em C++. O objetivo do sistema é permitir a criação, edição, leitura e manipulação de arquivos de texto puro de forma simplificada através do terminal ou console.
 

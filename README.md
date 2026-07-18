@@ -7,6 +7,7 @@ Bem-vindo ao meu repositório de projetos desenvolvidos durante a faculdade. Aqu
 ## 🚀 Projetos em Destaque
 
 ### 1. Editor de Textos com Autocomplete em C
+* **Descrição:** Este projeto consiste em um Editor de Textos Baseado em Texto (TUI) desenvolvido em C
 * **Tecnologias:** Ansi C
 * **Acesse aqui:** [Ir para a pasta]()
 ---

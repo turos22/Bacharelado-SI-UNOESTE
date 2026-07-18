@@ -15,7 +15,7 @@ Bem-vindo ao meu repositório de projetos desenvolvidos durante a faculdade. Aqu
 
 * **`/sistemas`**: Aplicações completas, APIs, e sistemas que utilizam uma ou mais linguagens integradas.
 * **`/mini-projetos`**: Scripts menores, exercícios de laboratório de programação, e implementações de estruturas de dados (C, PHP, JavaScript, etc.).
-* **`/exericicios`**: Alguns exercícios de Algoritmos do Beecrowd, LeetCode e Codeforces
+* **`/exericicios`**: Exercícios de Algoritmos para treinar, seja pelos exercícios das plataformas Beecrowd ou LeetCode ou exercícios acadêmicos passados em sala de aula
 
 ---
 

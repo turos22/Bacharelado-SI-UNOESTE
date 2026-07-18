@@ -1,0 +1,50 @@
+Vermelho;15;Ana Souza;Parada Respiratória;2025-11-01
+Amarelo;8;João Silva;Fratura Exposta;2025-11-01
+Verde;3;Pedro Costa;Resfriado Comum;2025-11-02
+Vermelho;20;Maria Lima;Trauma Múltiplo;2025-11-02
+Amarelo;12;Lucas Gomes;Dor Abdominal Forte;2025-11-03
+Verde;2;Sofia Reis;Troca de Curativo;2025-11-03
+Vermelho;18;Ricardo Neves;Hemorragia Interna;2025-11-04
+Amarelo;10;Camila Alves;Suspeita de Infecção;2025-11-04
+Verde;5;Bruno Oliveira;Dor de Cabeça Leve;2025-11-05
+Vermelho;25;Gabriela Dias;Choque Anafilático;2025-11-05
+Amarelo;7;Felipe Mendes;Queimadura de 2º Grau;2025-11-06
+Verde;4;Helena Nunes;Febre Baixa;2025-11-06
+Vermelho;22;Rafael Santos;AVC Isquêmico;2025-11-07
+Amarelo;9;Juliana Rocha;Crise Asmática;2025-11-07
+Verde;3;Carlos Martins;Torção no Tornozelo;2025-11-08
+Vermelho;17;Beatriz Ferreira;Infarto Agudo;2025-11-08
+Amarelo;11;Thiago Barbosa;Pneumonia Grave;2025-11-09
+Verde;2;Larissa Pinto;Conjuntivite;2025-11-09
+Vermelho;19;Fernando Costa;Politraumatismo;2025-11-10
+Amarelo;8;Mariana Luz;Apendicite Aguda;2025-11-10
+Verde;4;André Cardoso;Gripe Forte;2025-11-11
+Vermelho;24;Patricia Ramos;Convulsão Tônica;2025-11-11
+Amarelo;13;Rodrigo Vieira;Trombose Venosa;2025-11-12
+Verde;3;Amanda Silva;Dor de Garganta;2025-11-12
+Vermelho;16;Gustavo Teixeira;Hemorragia Digestiva;2025-11-13
+Amarelo;10;Isabela Moreira;Celulite Infecciosa;2025-11-13
+Verde;5;Diego Ribeiro;Entorse Leve;2025-11-14
+Vermelho;21;Vanessa Santos;Edema Agudo de Pulmão;2025-11-14
+Amarelo;9;Leonardo Campos;Cálculo Renal;2025-11-15
+Verde;2;Fernanda Lima;Rinite Alérgica;2025-11-15
+Vermelho;23;Paulo Henrique;Sepse Grave;2025-11-16
+Amarelo;12;Carla Oliveira;Colecistite Aguda;2025-11-16
+Verde;4;Marcelo Dias;Fadiga e Tontura;2025-11-17
+Vermelho;18;Renata Souza;Crise Hipertensiva;2025-11-17
+Amarelo;8;Vinicius Araujo;Luxação de Ombro;2025-11-18
+Verde;3;Tatiana Lopes;Dor nas Costas;2025-11-18
+Vermelho;20;Eduardo Machado;Parada Cardíaca;2025-11-19
+Amarelo;11;Aline Ferreira;Desidratação Severa;2025-11-19
+Verde;5;Roberto Carlos;Tosse Persistente;2025-11-20
+Vermelho;26;Simone Pereira;Choque Séptico;2025-11-20
+Amarelo;7;Matheus Correia;Abscesso Profundo;2025-11-21
+Verde;2;Bruna Martins;Azia Forte;2025-11-21
+Vermelho;19;Claudio Almeida;Embolia Pulmonar;2025-11-22
+Amarelo;10;Luciana Reis;Pancreatite Aguda;2025-11-22
+Verde;4;Fabio Gomes;Náusea e Vômito;2025-11-23
+Vermelho;22;Daniela Rocha;Insuficiência Respiratória;2025-11-23
+Amarelo;9;Anderson Silva;Fratura de Fêmur;2025-11-24
+Verde;3;Priscila Costa;Diarreia Leve;2025-11-24
+Vermelho;17;Sergio Monteiro;Queimadura de 3º Grau;2025-11-25
+Amarelo;13;Monica Oliveira;Obstrução Intestinal;2025-11-25

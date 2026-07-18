@@ -6,16 +6,9 @@ Bem-vindo ao meu repositório de projetos desenvolvidos durante a faculdade. Aqu
 
 ## 🚀 Projetos em Destaque
 
-### 1. Sistema de Gestão de Rankings
-* **Descrição:** Aplicação web para controle e tracking de pontuações de membros.
-* **Tecnologias:** C#, ASP.NET Core, Razor Views, MySQL.
-* **Acesse aqui:** [Ir para a pasta](./sistemas/sistema-de-ranking)
-
-### 2. Assistente de Voz Local (Projeto Athena)
-* **Descrição:** Um assistente virtual modular com reconhecimento de voz por sockets.
-* **Tecnologias:** Go (Backend), Python (Speech Recognition), Threads/Sincronização.
-* **Acesse aqui:** [Ir para a pasta](./sistemas/assistente-athena)
-
+### 1. Editor de Textos com Autocomplete em C
+* **Tecnologias:** Ansi C
+* **Acesse aqui:** [Ir para a pasta]()
 ---
 
 ## 📂 Organização do Repositório
@@ -25,7 +18,7 @@ Bem-vindo ao meu repositório de projetos desenvolvidos durante a faculdade. Aqu
 
 ---
 
-## 🛠️ Tecnologias Exploradas nos Estudos
+## 🛠️ Tecnologias Exploradas
 
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)

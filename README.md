@@ -9,14 +9,13 @@ Bem-vindo ao meu repositório de projetos desenvolvidos durante a faculdade. Aqu
 ### 1. Editor de Textos com Autocomplete em C
 * **Descrição:** Este projeto consiste em um Editor de Textos Baseado em Texto (TUI) desenvolvido em C
 * **Tecnologias:** Ansi C
-* **Acesse aqui:** [Ir para a pasta]()
 ---
 
 ## 📂 Organização do Repositório
 
 * **`/sistemas`**: Aplicações completas, APIs, e sistemas que utilizam uma ou mais linguagens integradas.
 * **`/mini-projetos`**: Scripts menores, exercícios de laboratório de programação, e implementações de estruturas de dados (C, PHP, JavaScript, etc.).
-* **`/exericicios`**: Exercícios de Algoritmos do Beecrowd, LeetCode e Codeforces
+* **`/exericicios`**: Exercícios de Algoritmos para treinar, seja pelos exercícios das plataformas Beecrowd ou LeetCode ou exercícios acadêmicos passados em sala de aula
 
 ---
 

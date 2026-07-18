@@ -1,6 +1,6 @@
-# Sistema de Simulação de Atendimento Hospitalar (Triagem de Manchester)
+# Sistema de Simulação de Atendimento Hospitalar
 
-Este projeto consiste em um sistema de simulação de atendimento emergencial hospitalar baseado em níveis de prioridade inspirados no Protocolo de Manchester. Desenvolvido em linguagem C/C++ como um projeto prático para a disciplina de **Estruturas de Dados (ED)**, o software utiliza conceitos avançados de alocação dinâmica, gerenciamento de filas encadeadas através de estruturas descritoras e uma lista duplamente encadeada para o controle dinâmico de salas médicas operacionais.
+Este projeto consiste em um sistema de simulação de atendimento emergencial hospitalar baseado em níveis de prioridade. Desenvolvido em linguagem C/C++ como um projeto prático para a disciplina de **Estruturas de Dados (ED)**, o software utiliza conceitos avançados de alocação dinâmica, gerenciamento de filas encadeadas através de estruturas descritoras e uma lista duplamente encadeada para o controle dinâmico de salas médicas operacionais.
 
 O sistema dispõe de uma Interface de Usuário Baseada em Texto (TUI) interativa e reativa em tempo real, renderizada com o auxílio da biblioteca `conio2.h`.
 

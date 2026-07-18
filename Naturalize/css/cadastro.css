@@ -1,0 +1,94 @@
+
+
+.cadastro-voluntario {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f7fdf9;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: Arial;
+  }
+  
+  .cadastro-voluntario h2 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 25px;
+    font-family: Arial;
+  }
+  
+  .form-voluntario {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-voluntario label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #333;
+    font-family: Arial;
+  }
+  
+  .form-voluntario input,
+  .form-voluntario select,
+  .form-voluntario textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-family: Arial;
+  }
+  
+  
+  .btn-enviar {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: Arial;font-family: Arial;
+  }
+
+  .btn-volta-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    font-family: Arial;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 135px;
+    margin-right: 120px;
+
+  }
+
+.insere {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    margin-bottom: 70px;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #009879;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.insere:hover {
+    background-color: #007f63;
+    transform: scale(1.1);
+}
+
+

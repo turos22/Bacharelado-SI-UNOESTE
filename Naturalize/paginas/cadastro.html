@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastro.css">
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/exibeDados.css">
+    <title>Cadastro de Voluntário</title>
+</head>
+<body>
+
+  <div class="centraliza_menu">
+    <header class="cabecalho">
+        <div class="menu_int">
+            <div class="esquerdo_menu">
+                <a href="/paginas/pagina1.html" class="link_logo">
+                    <div class="img_menu">
+                        <img class="Logo" src="/fotos/logo_empresarial_naturalize_menor__1_-removebg-preview.png" alt="">
+                    </div>
+                </a> 
+                <div class="itens_menu">
+                    <ul>
+                        <li><a href="#projetos" class="link_sem_format">Projetos</a></li> |
+                        <li><a href="#como_funciona" class="link_sem_format">Como Funciona</a></li> | 
+                        <li><a href="#sobre" class="link_sem_format">Sobre</a></li> | 
+                        <li><a href="#qm_somos" class="link_sem_format">Quem Somos</a></li> |
+                        <li><a href="#doacao" class="link_sem_format"><button class="botao-doacao" class="link_sem_format">Faça uma Doação Agora!</button> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+
+    <section class="cadastro-voluntario">
+        <h2>Seja um Voluntário!</h2>
+        <form onsubmit="alert('Cadastro enviado com sucesso!'); location.href='/paginas/pagina1.html'; return false;" class="form-voluntario">
+          
+          <label for="txtnome">Nome Completo:</label>
+          <input type="text" id="txtnome" name="txtnome" required>
+
+          <label for="txtemail">E-mail:</label>
+          <input type="email" id="txtemail" name="txtemail" required>
+
+          <label for="txttel">Telefone:</label>
+          <input type="tel" id="txttel" name="txttel" placeholder="(99) 99999-9999" required>
+
+          <label for="txtarea">Áreas de Interesse:</label>
+          <select id="txtarea" name="txtarea" required>
+            <option value="">-- Selecione --</option>
+            <option value="1">Doador</option>
+            <option value="2">Ajudante em Projetos</option>
+            <option value="3">Profissional Naturalize</option>
+          </select>
+
+          <label for="txtexp">Experiência (opcional):</label>
+          <textarea id="txtexp" name="txtexp" rows="4" placeholder="Conte-nos se você já participou de algum trabalho voluntário..."></textarea>
+
+          <label for="txthr">Disponibilidade (dias e horários):</label>
+          <input type="text" id="txthr" name="txthr" required>
+
+          <label for="txtcidade">Cidade:</label>
+          <input type="text" id="txtcidade" name="txtcidade" required>
+
+          <label for="txtestado">Estado:</label>
+          <input type="text" id="txtestado" name="txtestado" required>
+
+          <label for="txtusuario">Usuário:</label>
+          <input type="text" id="txtusuario" name="txtusuario" required>
+
+          <label for="txtsenha">Senha:</label>
+          <input type="text" id="txtsenha" name="txtsenha" required>
+
+          <button type="submit" class="btn-enviar">Realizar Cadastro</button>
+          <br>
+          <a href="/paginas/pagina1.html" class="btn-volta-link">Voltar</a>
+
+        </form>
+      </section>
+      
+</body>
+</html>

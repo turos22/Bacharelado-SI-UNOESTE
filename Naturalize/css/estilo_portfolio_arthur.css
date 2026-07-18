@@ -1,0 +1,245 @@
+*{
+    font-family: 'Consolas';
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1E1E1E; 
+    color: #D4D4D4; 
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+.top{
+    text-align: center;
+    font-size: 24px;
+    top: 0;
+    position: relative; 
+    height: 600px; 
+    z-index: 1;
+    background-color: #1E1E1E;
+}
+
+.sobre_mim{
+    background-color: #1E1E1E;
+    text-align: center;
+    font-size: 25px;
+    position: relative; 
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+    padding-right: 20px; 
+    z-index: 2;
+    grid-row: 1;
+}
+
+
+
+#nome{
+    background-color:#002B5B;
+    text-align: center;
+    font-size: 50px;
+    height: 600px;
+    width: 70%;
+    float: left;
+    display: flex;
+}
+#foto_inicio{
+    height: 600px;
+    width: 30%;
+    float: right;
+    overflow: hidden;
+}
+
+.foto_ini{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+
+.menu_topo{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    font-size: 25px;
+    padding: 30px;
+    flex-wrap: wrap;
+    
+}
+
+.lista_topo{
+    list-style: none;
+}
+
+.lista_topo li{
+    display: inline-block;
+    padding: 10px;
+    font-style: italic;
+    color: #FF9500;
+}
+
+.container_nome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF9500;
+    height: 150px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.nome_topo{
+    color:#002B5B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    width: 100%;
+    height: 150px;
+    font-style: italic;
+    font-size: 100px;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+}
+
+.sub_nome_topo{
+    color: #002B5B;
+    display: flex;
+    font-size: 30px;
+    width: 50%;
+    height: 50px;
+    font-family: "Georgia", serif;
+    font-style: italic;
+}
+
+.descricao {
+    font-size: 35px;
+    text-align: center;
+    color: #6A9955;
+}
+
+.container_descricao{
+    background-color: #1E1E1E;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    flex-direction: column;
+}
+.container_foto {
+    background-color: #1E1E1E; 
+    display: flex; 
+    align-items: center; 
+    width: 30%;
+    height: 600px;
+    float: left;
+    flex-direction: column; 
+    justify-content: space-evenly; 
+}
+.container_foto a > img {
+    width: 125px; 
+    height: 125px; 
+    border-radius: 8px; 
+    transition: transform 0.5s ease; 
+}
+
+.container_foto a > img:hover{
+    width: 150px;
+    height: 150px;
+}
+.projetos{
+    background-color:#1E1E1E;
+    text-align: center;
+    font-size: 40px;
+    position: static; 
+    width: 100%;
+    height: auto;
+    grid-row: 2;
+}
+
+.conteudo_meio{
+    display: grid; 
+    grid-template-rows: auto auto; 
+    gap: 50px;
+    width: 100%;
+}
+
+.container_projetos{
+    display: flex; 
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.banner{
+    background-color:#002B5B;
+    text-align: center;
+    font-size: 35px;
+    flex-direction: row;
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    color: #6A9955;
+    margin: 5px;
+    z-index: 2;
+    margin: 30px;
+    border-radius: 20px 20px 20px 20px;
+}
+.tam_img{    
+    background-color: aliceblue;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.footer {
+    background-color: #002B5B; 
+    color: #D4D4D4; 
+    padding: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.container_footer {
+    width: 100%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.info_contato {
+    text-align: left; 
+    font-size: 20px; 
+    margin-left: 20px; 
+}
+
+.texto_contato {
+    font-size: 18px; 
+    color: #FF9500; 
+}
+
+.email_contato, .telefone_contato {
+    font-size: 16px; 
+    color: #6A9955; 
+}
+
+.foto_footer {
+    margin-right: 20px; 
+}
+
+.foto_direita {
+    width: 150px;
+    height: 150px; 
+    border-radius: 50%; 
+    border: 2px solid #FF9500;
+}

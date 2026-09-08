@@ -1,3 +1,6 @@
 [submodule "mini-projetos/Java/FilmesWeb"]
 	path = mini-projetos/Java/FilmesWeb
 	url = https://github.com/turos22/FilmesWeb.git
+[submodule "mini-projetos/Java/Pesquisa_Ordenacao"]
+	path = mini-projetos/Java/Pesquisa_Ordenacao
+	url = https://github.com/turos22/PO-Java.git
